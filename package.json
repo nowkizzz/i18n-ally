@@ -1117,7 +1117,8 @@
           "enum": [
             "slug",
             "random",
-            "empty"
+            "empty",
+            "translation"
           ],
           "description": "%config.keygen_strategy%"
         },
@@ -1144,6 +1145,16 @@
           "default": null,
           "description": "%config.key_max_length%"
         },
+        "i18n-ally.extract.translate.sourceLanguage": {
+          "type": "string",
+          "default": "auto",
+          "description": "%config.extract.translate.sourceLanguage%"
+        },   
+        "i18n-ally.extract.translate.targetLanguage": {
+          "type": "string",
+          "default": "auto",
+          "description": "%config.extract.translate.targetLanguage%"
+        },         
         "i18n-ally.extract.targetPickingStrategy": {
           "type": "string",
           "default": "none",

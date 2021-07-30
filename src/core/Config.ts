@@ -51,7 +51,13 @@ export class Config {
   }
 
   static get autoDetection() {
+    console.log('是否自动配置：autoDetection')
     return Config.getConfig<boolean>('autoDetection') ?? true
+  }
+
+  static updateAutoDetection(value:boolean) {
+    console.log('自动配置：autoDetection')
+    this.setConfig('autoDetection', value, true)
   }
 
   // languages
@@ -269,10 +275,12 @@ export class Config {
   }
 
   static set _localesPaths(paths: string[] | undefined) {
+    console.log('setLocalesPaths')
     this.setConfig('localesPaths', paths)
   }
 
   static updateLocalesPaths(paths: string[]) {
+    console.log('updateLocalesPaths')
     this._localesPaths = uniq((this._localesPaths || []).concat(paths))
   }
 
@@ -443,6 +451,14 @@ export class Config {
 
   static get extractParserHTMLOptions() {
     return this.getConfig<ExtractionHTMLOptions>('extract.parsers.html') ?? {}
+  }
+
+  static get extractTranslateSourceLanguage() {
+    return this.getConfig('extract.translate.sourceLanguage') ?? 'auto'
+  }
+  
+  static get extractTranslateTargetLanguage() {
+    return this.getConfig('extract.translate.targetLanguage') ?? 'auto'
   }
 
   static get showFlags() {

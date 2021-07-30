@@ -57,6 +57,24 @@ export class ConfigLocalesGuide {
     await window.showInformationMessage(i18n.t('prompt.config_locales_success'))
   }
 
+  static async inquirySet() {
+    const okText = i18n.t('prompt.config_locales_button')
+    const noText = i18n.t('prompt.config_locales_cancel')
+    const notAgainText = i18n.t('prompt.config_locales_not_show_again')
+    const result = await window.showInformationMessage(
+      i18n.t('prompt.config_locales_info'),
+      okText,
+      noText,
+      notAgainText
+    )
+    if (result === okText) {
+      this.autoSet()
+    } else if (result === notAgainText) {
+      // 不再提示
+      Config.updateAutoDetection(true)
+    }
+  }
+
   static async autoSet() {
     const rootPath = workspace.rootPath
     if (!rootPath)
@@ -82,6 +100,7 @@ export class ConfigLocalesGuide {
     })
 
     if (result.length) {
+      // 直接添加配置路径
       Config.updateLocalesPaths(result)
 
       await window.showInformationMessage(

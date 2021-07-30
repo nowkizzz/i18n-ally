@@ -132,6 +132,8 @@
   "prompt.choice_locale": "Choose a locale",
   "prompt.config_locales_auto_success": "Locales path auto set to \"{0}\".",
   "prompt.config_locales_button": "Config Now",
+  "prompt.config_locales_cancel": "No",
+  "prompt.config_locales_not_show_again": "Don't show again",
   "prompt.config_locales_info": "Configure the locales directory for your project",
   "prompt.config_locales_success": "Locales path successfully configured.",
   "prompt.create_new_path": "Create a new path",

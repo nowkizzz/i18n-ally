@@ -4,7 +4,7 @@ import { overrideConfirm } from './overrideConfirm'
 import { Commands } from './commands'
 import { keypathValidate, Log, promptTemplates } from '~/utils'
 import { ExtensionModule } from '~/modules'
-import { extractHardStrings, generateKeyFromText, Config, CurrentFile, DetectionResult, Telemetry, TelemetryKey } from '~/core'
+import { extractHardStrings, generatePromiseKeyFromText,Config, CurrentFile, DetectionResult, Telemetry, TelemetryKey } from '~/core'
 import i18n from '~/i18n'
 
 import { parseHardString } from '~/extraction/parseHardString'
@@ -60,7 +60,8 @@ async function ExtractOrInsertCommnad(options?: ExtractTextOptions, detection?: 
   const { text, rawText, range, args, document, isInsert } = options
   const filepath = document.uri.fsPath
 
-  const default_keypath = generateKeyFromText(rawText || text, filepath)
+  // promise情况下的
+  const default_keypath = await generatePromiseKeyFromText(rawText || text, filepath)
 
   const existingItems: QuickPickItemWithKey[]
     = isInsert
@@ -148,7 +149,7 @@ async function ExtractOrInsertCommnad(options?: ExtractTextOptions, detection?: 
     }
 
     const replacer = await promptTemplates(keypath, args, document, detection)
-
+      
     if (!replacer) {
       window.showWarningMessage(i18n.t('prompt.extraction_canceled'))
       return

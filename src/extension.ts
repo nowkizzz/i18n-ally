@@ -11,6 +11,8 @@ import editorModules from '~/editor'
 export async function activate(ctx: ExtensionContext) {
   Log.info(`🈶 Activated, v${version}`)
 
+  console.log('开始启动页面')
+
   Config.ctx = ctx
 
   i18n.init(ctx.extensionPath)

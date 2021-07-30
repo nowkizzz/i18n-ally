@@ -14,7 +14,7 @@ export default class LibreTranslate extends TranslateEngine {
     let apiRoot = this.apiRoot
     if (Config.libreTranslateApiRoot)
       apiRoot = Config.libreTranslateApiRoot
-
+    console.log('翻译',apiRoot, from,to)
     const response = await axios.post(`${apiRoot}/translate`, {
       q: options.text,
       source: from,

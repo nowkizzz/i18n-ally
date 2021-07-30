@@ -379,8 +379,12 @@ export class Global {
         if (!isValidProject && hasLocalesSet)
           Log.info('⚠ Current workspace is not a valid project, extension disabled')
 
+        // 添加是否自动侦察 自动设置添加本地路径
         if (isValidProject && !hasLocalesSet && Config.autoDetection)
-          ConfigLocalesGuide.autoSet()
+          // 提示询问
+          ConfigLocalesGuide.inquirySet()
+          // 自动配置
+          // ConfigLocalesGuide.autoSet()
       }
 
       this.unloadAll()
